@@ -1,0 +1,6 @@
+{
+  "name": "cocos2d",
+  "role": "framework",
+  "version": [3, 17, 0],
+  "dependencies": []
+}
