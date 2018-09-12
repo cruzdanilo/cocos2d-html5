@@ -190,23 +190,6 @@ var classManager = new ClassManager();
 
         // The dummy Class constructor
         var Class;
-        if (cc.game.config && cc.game.config[cc.game.CONFIG_KEY.exposeClassName]) {
-            var constructor = "(function " + (props._className || "Class") + " (arg0, arg1, arg2, arg3, arg4, arg5) {\n";
-            constructor += "    this.__instanceId = classManager.getNewInstanceId();\n";
-            constructor += "    if (this.ctor) {\n";
-            constructor += "        switch (arguments.length) {\n";
-            constructor += "        case 0: this.ctor(); break;\n";
-            constructor += "        case 1: this.ctor(arg0); break;\n";
-            constructor += "        case 3: this.ctor(arg0, arg1, arg2); break;\n";
-            constructor += "        case 4: this.ctor(arg0, arg1, arg2, arg3); break;\n";
-            constructor += "        case 5: this.ctor(arg0, arg1, arg2, arg3, arg4); break;\n";
-            constructor += "        default: this.ctor.apply(this, arguments);\n";
-            constructor += "        }\n";
-            constructor += "    }\n";
-            constructor += "})";
-            Class = eval(constructor);
-        }
-        else {
             Class = function (arg0, arg1, arg2, arg3, arg4) {
                 this.__instanceId = classManager.getNewInstanceId();
                 if (this.ctor) {
@@ -221,7 +204,6 @@ var classManager = new ClassManager();
                     }
                 }
             };
-        }
 
         desc.value = classManager.getNewID();
         Object.defineProperty(prototype, '__pid', desc);

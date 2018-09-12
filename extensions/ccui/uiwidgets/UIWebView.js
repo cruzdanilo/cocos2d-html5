@@ -166,23 +166,6 @@ ccui.WebView = ccui.Widget.extend(/** @lends ccui.WebView# */{
     },
 
     /**
-     * In the webview execution within a period of js string
-     * @param {String} str
-     */
-    evaluateJS: function (str) {
-        var iframe = this._renderCmd._iframe;
-        if (iframe) {
-            var win = iframe.contentWindow;
-            try {
-                win.eval(str);
-                this._dispatchEvent(ccui.WebView.EventType.JS_EVALUATED);
-            } catch (err) {
-                console.error(err);
-            }
-        }
-    },
-
-    /**
      * Limited scale
      */
     setScalesPageToFit: function () {
@@ -247,8 +230,7 @@ ccui.WebView = ccui.Widget.extend(/** @lends ccui.WebView# */{
 ccui.WebView.EventType = {
     LOADING: "loading",
     LOADED: "load",
-    ERROR: "error",
-    JS_EVALUATED: "js"
+    ERROR: "error"
 };
 
 (function () {

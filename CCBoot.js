@@ -788,7 +788,6 @@ cc.loader = (function () {
          * @param {function} [cb] arguments are : err, txt
          */
         loadTxt: function (url, cb) {
-            if (!cc._isNodeJs) {
                 var xhr = this.getXMLHttpRequest(),
                     errInfo = "load " + url + " failed!";
                 xhr.open("GET", url, true);
@@ -848,12 +847,6 @@ cc.loader = (function () {
                     }
                 }
                 xhr.send(null);
-            } else {
-                var fs = require("fs");
-                fs.readFile(url, function (err, data) {
-                    err ? cb(err) : cb(null, data.toString());
-                });
-            }
         },
 
         loadCsb: function(url, cb){
