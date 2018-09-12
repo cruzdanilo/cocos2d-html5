@@ -8,3 +8,4 @@ node_modules
 /package
 /tools/jsdoc_toolkit/jsdoc_toolkit-2.4.0
 /.project
+.DS_Store
